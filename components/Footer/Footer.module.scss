@@ -1,0 +1,24 @@
+.footer {
+    background-color: #f2fdff;
+    color: #000;
+    height:12vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center ;
+    padding: 0px 10px;
+    width:100%;
+    .footerLinkHead{
+      padding: 5px;
+    }
+    .footerLink{
+      display: flex;
+      justify-content: space-evenly;
+     
+    }
+    .companyLogo{
+      width: 180px;
+      height:80px;
+    }
+  }
+  

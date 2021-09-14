@@ -1,0 +1,71 @@
+
+.navigation {
+  // background-color: #f3f9fa;
+  // color: #000;
+  height:14vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  // padding: 5px;
+  width:100%;
+  position: fixed;
+  top:0;
+  left: 0;
+  z-index: 10;
+  .companyLogo{
+    width: 230px;
+    height:100px;
+    // border:1px solid red;
+  }
+  .navContainer{
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .navItem{
+      list-style: none;
+      margin: 10px 20px;
+      margin-left: 10px;
+      .navLink{
+        color: #000;
+        text-decoration: none;
+        font-size: 1.3rem;
+        font-weight: 400;
+        &:hover{
+          text-decoration:underline;
+        }
+      }
+      .btn {
+        padding: 8px 20px;
+        border:  2px solid;
+        color: #fff;
+        border-radius: 100px;
+        &:hover {
+          text-decoration: none;
+          background-color: rgba(5, 5, 5, 0.05);
+        }
+    }
+    }
+    
+  }
+}
+
+/* hamburger menu */
+.hamburgerMenu{
+  display: none;
+  color: #dbdbd2;
+  width: 50px;
+  height: 50px;
+  font-size: 3rem;
+  margin-right: 10px;
+}
+
+@media(max-width:768px){
+  .navContainer{
+    display: none;
+  }
+  .hamburgerMenu{
+    display: unset;
+  }
+}
