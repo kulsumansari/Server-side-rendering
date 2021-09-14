@@ -2,10 +2,10 @@ import Head from 'next/head'
 import NavBar from '../../components/NavBar/NavBar';
 import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
+import { getData } from '../../utils/apiCalls';
 
 export async function getServerSideProps(){
-    let response = await fetch("https://kulsumansari.github.io/webpage-data/companyData/data.json");
-    let {rawEngData} = await response.json();
+    let {rawEngData} = await getData();
     return({
       props:{ rawEngData }
     })

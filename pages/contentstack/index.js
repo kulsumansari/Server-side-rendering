@@ -2,10 +2,10 @@ import Head from 'next/head'
 import NavBar from '../../components/NavBar/NavBar';
 import Banner from '../../components/Banner/Banner';
 import Footer from '../../components/Footer/Footer';
+import { getData } from '../../utils/apiCalls';
 
 export async function getServerSideProps(){
-    let response = await fetch("https://kulsumansari.github.io/webpage-data/companyData/data.json");
-    let {contentStackData} = await response.json();
+    let {contentStackData} = await getData();
     return({
       props:{contentStackData}
     })
@@ -21,12 +21,12 @@ const themeObject ={
     display:'flex',
     alignItems:'flex-start',
     top:'40%',
-    left:'30%',
+    right:'70%',
   }
 }
 
-export default function ContentStack({contentStackData}) {
-    let {page, navData , bannerData , footerData} = contentStackData;
+export default function ContentStack(props) {
+    let {page, navData , bannerData , footerData} = props.contentStackData;
 
     return (<>
      <Head>

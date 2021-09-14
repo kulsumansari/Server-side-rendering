@@ -1,68 +1,59 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import NavBar from '../components/NavBar/NavBar';
+import Footer from '../components/Footer/Footer'
+import { getData } from '../utils/apiCalls';
 
 export async function getServerSideProps(){
-  let response = await fetch("https://kulsumansari.github.io/webpage-data/companyData/data.json");
-  let {surfBoardData,rawEngData ,contentStackData} = await response.json();
-  // console.log(surfBoardData.bannerData)
+  let {ssrData} =await getData();
   return({
-    props:{
-      surfboard:{
-        companyName: surfBoardData.bannerData.companyName,
-        homelink: surfBoardData.navData.navLinks.find((link)=>{
-          return link.title==='Home'
-        }),
-        backgroundImg: surfBoardData.bannerData.bannerImage,
-      },
-      raweng:{
-        companyName: rawEngData.bannerData.companyName,
-        homelink: rawEngData.navData.navLinks.find((link)=>{
-          return link.title==='Home'
-        }),
-        backgroundImg: rawEngData.bannerData.bannerImage,
-      },
-      contentstack:{
-        companyName: contentStackData.bannerData.companyName,
-        homelink: contentStackData.navData.navLinks.find((link)=>{
-          return link.title==='Home'
-        }),
-        backgroundImg: contentStackData.bannerData.bannerImage,
-      },
-    }
-  })
+    props:{ ssrData}
+  })   
+}
+
+const themeObject ={
+  themeColors:{
+    backgroundColor:'#343434',
+    color:'#fff'
+  },
 }
 
 export default function Home(props) {
+  let {page, navData,partnersData,footerData} = props.ssrData;
   return (
     <div>
       <Head>
-        <title>Server side Rendering</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>{page.title}</title>
+        <link rel="icon" href={page.icon} />
       </Head>
+      <NavBar data={navData} style={themeObject.themeColors}/>
       <div className='container'>
-        <h1>Our Partners</h1>
+        <h1>{partnersData.title}</h1>
 
         <div className='main'>
-          {
-            Object.entries(props).map(([key,value])=>{
-              return<div className='card' style={{backgroundImage:`url(${value.backgroundImg})`}} key={value.homelink.linkId}>
-                <h3>{value.companyName}</h3>
-                  <Link href={value.homelink.href}>
+          { 
+            partnersData.partners.map((partner)=>{
+              return(
+              <div className='card' key={partner.partnerId} style={{backgroundImage:`url(${partner.backgroundImg})`}} >
+                <h3>{partner.companyName}</h3>
+                  <Link href={partner.href}>
                       <a className='btn'> Visit Page </a>
                   </Link>
-              </div>
-              
+              </div>)
             })
+            
           }
         </div> 
       </div>
-    
+      <Footer data={footerData} style={themeObject.themeColors}/>
+
 
       <style jsx global>{`
         html,
         body {
           padding: 0px;
           margin: 0px;
+          margin-top:6vh;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
@@ -73,7 +64,9 @@ export default function Home(props) {
           flex-direction:column;
           align-items:center;
           justify-content:space-around;
-          margin-top:12vh;
+          margin:10vh auto;
+          min-height:60vh;
+
         }
         .main{
           width:100%;

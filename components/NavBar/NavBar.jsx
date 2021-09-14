@@ -3,16 +3,16 @@ import styles from './NavBar.module.scss';
 import Logo from '../Logo/Logo';
 
 function NavBar(props){
-    let {logo, navLinks} = props.data;
+    let {logo, navLinks,menuUrl} = props.data;
     return(
          <div className={styles.navigation} style={props.style}>
 
              <div className={styles.companyLogo}>
                 <Logo data={logo} />
              </div>                             
-            {/* <div className={styles.hamburgerMenu}>
-                <i className='fa fa-bars'></i>
-            </div> */}
+            <div className={styles.hamburgerMenu}>
+                <img src={menuUrl} />
+            </div>
             
             <ul className={styles.navContainer}> 
                 {
