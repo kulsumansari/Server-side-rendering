@@ -57,7 +57,7 @@ export default function Home(props) {
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
-          background:#fff4e2;
+          background:#f4f7ce;
         }
         .container{
           display:flex;
