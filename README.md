@@ -19,7 +19,7 @@ From your terminal/command line:
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/kulsumansari/Server-side-rendering.git
+   $ git clone https://github.com/kulsumansari/Server-side-rendering.git
    ```
 2. Install Dependencies
    ```sh
