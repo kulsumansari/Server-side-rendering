@@ -13,8 +13,23 @@ function Footer(props){
                 <Logo data={footerLogo} />
             </div>
             <div>
-                <p className={styles.footerLinkHead}>{footerLinkHead} </p>
+                <p className={styles.footerLinkHead}>{footerLinkHead}</p>
                 <div className={styles.footerLink}>
+                    {footerLinks.map((link)=>{
+                        return (
+                        <a
+                            key={link.linkId}
+                            href={link.href}
+                            style={{color:props.style.color}}
+                            >
+                            {link.linkTitle}
+                        </a>)
+                    })}
+                </div>
+            </div>
+            <div>
+                <p className={styles.footerLinkHead}>Follow Us On</p>
+                <div className={styles.socialMediaLink}>
                     <FontAwesomeIcon icon={faFacebook} />
                     <FontAwesomeIcon icon={faTwitter} />
                     <FontAwesomeIcon icon={faGithub} />

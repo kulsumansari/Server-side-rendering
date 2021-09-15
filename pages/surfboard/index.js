@@ -32,7 +32,7 @@ export default function SurfBoard({surfBoardData}) {
         </Head>
             <NavBar data={navData} style={themeObject.themeColors}/>
             <Banner data={bannerData} style={themeObject.bannerContentAlign}/>
-            <Footer data={footerData}/>
+            <Footer data={footerData} style={themeObject.themeColors}/>
 
         <style jsx global>{`
         html,
